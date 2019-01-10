@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<div class="container"> <!-- adds space to the left and right of the page/div-->
+ 
+    <header class="jumbotron">
+        <div class="container"> <!-- Allows space between the text and the jumbotron border for small screens-->
+            <h1>Welcome to YelpCamp!</h1>   
+            <p>View our hand-picked campgrounds from all over the world</p>
+            <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a> 
+        </div>
+    </header>
+    
+    <div class="card"> 
+    <!--removed from the above line: style="display:flex; flex-wrap:wrap"--> 
+    <!--The above styles allow the grid of campgrounds to be more even. -->
+
+        <div class="row text-center">
+            <% campgrounds.forEach(function(campground) { %>
+                <div class="col-sm-6 col-md-4 col-xl-3">
+                    <img class="card-img-top" src="<%= campground.image %>">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= campground.name %></h4>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary"> More Info</a>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        
+    </div>
+
+</div>
+
+<% include ../partials/footer %>

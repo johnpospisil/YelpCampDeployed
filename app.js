@@ -15,14 +15,16 @@ var express    = require("express"),
 var indexRoutes = require("./routes/index"),
     campgroundRoutes = require("./routes/campgrounds"),
     commentRoutes = require("./routes/comments");
+    
+    console.log(process.env.DATABASEURL);
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
-// Access (and if necessary, Create) the DB, yelp_camp.
 // mongoose.connect("mongodb://localhost:27017/yelp_camp_v9", {useNewUrlParser: true})
 // For remote mongoose, use this link to use MLab.
 // Use the username and password of the user a user assigned to the database.
-mongoose.connect("mongodb://audiofreak7:passw0rd@ds153304.mlab.com:53304/yelpcamp99", {useNewUrlParser: true});
+// mongoose.connect("mongodb://audiofreak7:passw0rd@ds153304.mlab.com:53304/yelpcamp99", {useNewUrlParser: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
 // Serve the public directory, so that the stylesheet is easier to access
 // '__dirname' refers to the app working directory
 app.use(express.static(__dirname + "/public"));

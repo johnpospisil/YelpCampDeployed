@@ -32,6 +32,7 @@ app.use(flash());
 // seedDB();
 
 // PASSPORT CONFIGURATION
+// mongoose.connect("mongodb://dbusername:dbuserpassword@ds153304.mlab.com:53304/yelpcamp99", {useNewUrlParser: true});
 app.use(require("express-session") ({
     secret: "My cat's breath smells like cat food",
     resave: false,
